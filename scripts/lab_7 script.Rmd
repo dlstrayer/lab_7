@@ -1,11 +1,13 @@
 ---
 title: "lab_7 script"
-author: "Deanna Strayer, Alex Newson, Sabreen NoorAli"
+author: "Deanna Strayer, Alex Newson, Sabreen NoorAli, Tony Daza, Seulbi Lee"
 date: "11/2/2022"
-output: pdf_document
+output: html_document
+bibliography: references.bib
+csl: apa-annotated-bibliography.csl
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, fig.width = 6.5, fig.height = 8)
 ```
 
@@ -33,3 +35,13 @@ ggplot(star, aes(x = totexp, y = tmathss )) +
        color = "lunch status")
 ```
 
+This is r-markdown document has [@vanderheyden_is_2018] as a reference.
+
+This is r-markdown document has [@polikoff_instructional_2010] as a reference.
+
+This is r-markdown document has Naumann et al.'s article [-@naumann_sensitivity_2019] as a reference.
+
+This is r-markdown document has Stockard et al.'s article [-@stockard_effectiveness_2018] as a reference.
+
+
+# References
