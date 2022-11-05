@@ -1,6 +1,6 @@
 ---
 title: "lab_7 script"
-author: "Deanna Strayer"
+author: "Deanna Strayer, Alex Newson, Sabreen NoorAli"
 date: "11/2/2022"
 output: pdf_document
 ---
@@ -19,7 +19,17 @@ library(ggplot2)
 star <- import(here("data","star.csv"), setclass="tbl_df") %>%
   clean_names()
 
-
-
-
 ```
+
+```{r}
+ggplot(star, aes(x = totexp, y = tmathss )) + 
+  geom_point(aes(color = "grey", alpha = 0.5)) + 
+  geom_smooth(method = lm, se = TRUE) +
+  theme_minimal() + 
+  labs(x = "Teacher Experience(years)", 
+       y = "Total Math Scale Score",
+       title = "Relation between Teacher Experience and Math Score",
+       subtitle = "Separate Regression lines displayed by free/reduced price lunch status", 
+       color = "lunch status")
+```
+
