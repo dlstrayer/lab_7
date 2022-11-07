@@ -11,17 +11,48 @@ csl: apa-annotated-bibliography.csl
 knitr::opts_chunk$set(echo = FALSE, fig.width = 6.5, fig.height = 8)
 ```
 
-```{r}
+```{r, echo = FALSE}
 library(tidyverse)
 library(here)
 library(rio)
 library(janitor)
 library(ggplot2)
+library(dplyr)
 
 star <- import(here("data","star.csv"), setclass="tbl_df") %>%
   clean_names()
 
 ```
+
+#Question 3:  
+**Table of Summary Statistics Examining Math and Reading scores by sex and Free/reduced Price Lunch Status**  
+```{r}
+star_table <- star %>%
+  select("sex", "frl", "tmathss", "treadss") %>%
+  group_by(sex, frl) %>%
+  summarise(math_mean = mean(tmathss), 
+            math_sd = sd(tmathss), 
+            rdg_mean = mean(treadss), 
+            rdg_sd = sd(treadss))
+star_table %>%
+  mutate(across(where(is.numeric), round, 2))
+```
+
+The table above shows the mean and standard deviation of math and reading scores for boys and girls mediated by free and reduced price lunch status.  
+
+Girls without Free/Reduced price lunch had the highest math and reading scores while boys without Free/Reduced price lunch scored higher than both boys and girls *with* Free/Reduced Price lunch.  
+
+The mean math score for boys *with* Free/Reduced price lunch was **469.87** compared to boys with *paid lunch* who had an average math score of **492.85**
+
+The trend continued for girl where the mean math score for girls *with* Free/Reduced price lunch was **477.51** compared to girls with *paid lunch* who had an average math score of **501.21**
+
+Furthermore the trend was identical for reading scores suggesting that Free/Reduced Price Lunch status mediates the relationship between math and reading scores for boys and girls.  
+
+Further analysis will have to be conducted to evaluate the magnitude of the effect for the Free/Reduced Price Lunch variable on math and reading scores, but that is outside the scope of this assignment.  
+
+
+# Question 4:  
+**Examining Teacher Experience as a predictor of Math Score mediated by Free/Reduced Price Lunch status**  
 
 ```{r}
 ggplot(star, aes(x = totexp, y = tmathss )) + 
