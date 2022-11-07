@@ -67,6 +67,8 @@ ggplot(star, aes(x = totexp, y = tmathss )) +
   theme(legend.position = "bottom")
 ```
 
+The above graph titled `*Relation between Teacher Experience and Math Scores*` displays how students with free/reduced lunch, on average, perform **lower** on `total math scale score` as compared to students on paid lunches. Teacher experience did slightly increase scores for both groups; however, students with paid lunches consistently outperformed students with free/reduced lunches, on average. There is **no overlap** between the two groups showing no interaction between the variables. 
+
 This is r-markdown document has [@vanderheyden_is_2018] as a reference.
 
 This is r-markdown document has [@polikoff_instructional_2010] as a reference.
