@@ -24,8 +24,9 @@ star <- import(here("data","star.csv"), setclass="tbl_df") %>%
 
 ```
 
-#Question 3:  
-**Table of Summary Statistics Examining Math and Reading scores by sex and Free/reduced Price Lunch Status**  
+#Question 3:\
+**Table of Summary Statistics Examining Math and Reading scores by sex and Free/reduced Price Lunch Status**
+
 ```{r}
 star_table <- star %>%
   select("sex", "frl", "tmathss", "treadss") %>%
@@ -38,21 +39,21 @@ star_table %>%
   mutate(across(where(is.numeric), round, 2))
 ```
 
-The table above shows the mean and standard deviation of math and reading scores for boys and girls mediated by free and reduced price lunch status.  
+The table above shows the mean and standard deviation of math and reading scores for boys and girls mediated by free and reduced price lunch status.
 
-Girls without Free/Reduced price lunch had the highest math and reading scores while boys without Free/Reduced price lunch scored higher than both boys and girls *with* Free/Reduced Price lunch.  
+Girls without Free/Reduced price lunch had the highest math and reading scores while boys without Free/Reduced price lunch scored higher than both boys and girls *with* Free/Reduced Price lunch.
 
 The mean math score for boys *with* Free/Reduced price lunch was **469.87** compared to boys with *paid lunch* who had an average math score of **492.85**
 
 The trend continued for girl where the mean math score for girls *with* Free/Reduced price lunch was **477.51** compared to girls with *paid lunch* who had an average math score of **501.21**
 
-Furthermore the trend was identical for reading scores suggesting that Free/Reduced Price Lunch status mediates the relationship between math and reading scores for boys and girls.  
+Furthermore the trend was identical for reading scores suggesting that Free/Reduced Price Lunch status mediates the relationship between math and reading scores for boys and girls.
 
-Further analysis will have to be conducted to evaluate the magnitude of the effect for the Free/Reduced Price Lunch variable on math and reading scores, but that is outside the scope of this assignment.  
+Further analysis will have to be conducted to evaluate the magnitude of the effect for the Free/Reduced Price Lunch variable on math and reading scores, but that is outside the scope of this assignment.
 
+# Question 4:
 
-# Question 4:  
-**Examining Teacher Experience as a predictor of Math Score mediated by Free/Reduced Price Lunch status**  
+**Examining Teacher Experience as a predictor of Math Score mediated by Free/Reduced Price Lunch status**
 
 ```{r}
 
@@ -70,10 +71,11 @@ ggplot(star, aes(x = totexp, y = tmathss )) +
        title = "Relation between Teacher Experience and Math Score",
        subtitle = "Separate Regression lines displayed by free/reduced price lunch status", 
        color = "Lunch status") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") + 
+scale_color_discrete("Lunch Status")
 ```
 
-The above graph titled *Relation between Teacher Experience and Math Scores* displays how students with free/reduced meals, on average, perform **lower** on `total math scale score` as compared to students on paid meals. Teacher experience did slightly increase scores for both groups; however, students with paid meals consistently outperformed students with free/reduced meals, on average. There is **no overlap** between the two groups showing no interaction between the variables. 
+The above graph titled *Relation between Teacher Experience and Math Scores* displays how students with free/reduced meals, on average, perform **lower** on `total math scale score` as compared to students on paid meals. Teacher experience did slightly increase scores for both groups; however, students with paid meals consistently outperformed students with free/reduced meals, on average. There is **no overlap** between the two groups showing no interaction between the variables.
 
 This is r-markdown document has [@vanderheyden_is_2018] as a reference.
 
@@ -82,6 +84,5 @@ This is r-markdown document has [@polikoff_instructional_2010] as a reference.
 This is r-markdown document has Naumann et al.'s article [-@naumann_sensitivity_2019] as a reference.
 
 This is r-markdown document has Stockard et al.'s article [-@stockard_effectiveness_2018] as a reference.
-
 
 # References
