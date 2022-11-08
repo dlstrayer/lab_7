@@ -55,6 +55,12 @@ Further analysis will have to be conducted to evaluate the magnitude of the effe
 **Examining Teacher Experience as a predictor of Math Score mediated by Free/Reduced Price Lunch status**  
 
 ```{r}
+
+star <- star %>%
+  mutate(frl = recode(frl, 
+                      yes = "Free/Reduced Price Meals", 
+                      no = "Paid Meals"))
+
 ggplot(star, aes(x = totexp, y = tmathss )) + 
   geom_point(color = "grey", alpha = 0.5) + 
   geom_smooth(aes(color = frl), method = lm, se = TRUE) +
